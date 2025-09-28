@@ -114,7 +114,7 @@ Pre-configured agent groups for quick deployment:
 - **Environmental & Sustainability**: Climate scientists, sustainability consultants
 - **Social Services**: Community organizers, social workers, policy analysts
 - **Sports & Recreation**: Fitness trainers, sports analysts, nutrition experts
-- **Travel & Hospitality**: Travel planners, hotel managers, tour guides
+- **Travel & Hospitality**: Travel planners, hotel managers, tour guides.
 
 ## Prerequisites
 
