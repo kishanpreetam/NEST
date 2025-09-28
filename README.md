@@ -2,14 +2,14 @@
 
 A production-ready framework for deploying and managing specialized AI agents with seamless agent-to-agent communication and intelligent discovery.
 
-**NEST** (NANDA Sandbox and Testbed) is part of Project NANDA (Network of Autonomous Distributed Agents) - a comprehensive ecosystem for intelligent agent deployment and coordination.
+**NEST** (NANDA Sandbox and Testbed) is part of Project NANDA (Networked AI Agents in Decentralized Archtiecute) - a comprehensive ecosystem for intelligent agent deployment and coordination.
 
 ## Key Features
 
 - **Intelligent Agents**: Deploy specialized AI agents powered by Claude LLM
 - **A2A Communication**: Agents can find and communicate with each other using `@agent-id` syntax  
 - **Cloud Deployment**: One-command deployment to AWS EC2 with automatic setup
-- **Registry Integration**: Automatic registration with NANDA agent registry
+- **Index Integration**: Automatic registration with NANDA agent Index
 - **Scalable**: Deploy single agents or 10+ agents per instance
 - **Production Ready**: Robust error handling, health checks, and monitoring
 
