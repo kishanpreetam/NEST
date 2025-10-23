@@ -50,12 +50,17 @@ def get_agent_config():
     capabilities = os.getenv("AGENT_CAPABILITIES", "general assistance,Ubuntu system administration,Python development,cloud deployment,agent-to-agent communication")
     registry_url = os.getenv("REGISTRY_URL", None)
     public_url = os.getenv("PUBLIC_URL", None)
-    
+    custom_system_prompt = os.getenv("SYSTEM_PROMPT", None)
+
     # Parse capabilities into a list
     expertise_list = [cap.strip() for cap in capabilities.split(",")]
     
-    # Create dynamic system prompt based on configuration
-    system_prompt = f"""You are {agent_name}, a {specialization} working in the domain of {domain}.
+    # Use custom system prompt if provided, otherwise generate default
+    if custom_system_prompt:
+        system_prompt = custom_system_prompt
+        print("✅ Using custom system prompt from configuration")
+    else:
+        system_prompt = f"""You are {agent_name}, a {specialization}...
 
 {description}
 
