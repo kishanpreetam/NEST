@@ -58,6 +58,7 @@ class NANDA:
         self.bridge = SimpleAgentBridge(
             agent_id=agent_id,
             agent_logic=agent_logic,
+	    url=public_url,
             registry_url=registry_url,
             telemetry=self.telemetry
         )

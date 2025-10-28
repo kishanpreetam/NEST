@@ -22,9 +22,10 @@ class SimpleAgentBridge(A2AServer):
     def __init__(self, 
                  agent_id: str, 
                  agent_logic: Callable[[str, str], str],
+               	url: Optional[str] = None,
                  registry_url: Optional[str] = None,
                  telemetry = None):
-        super().__init__()
+        super().__init__(url=url)
         self.agent_id = agent_id
         self.agent_logic = agent_logic
         self.registry_url = registry_url
