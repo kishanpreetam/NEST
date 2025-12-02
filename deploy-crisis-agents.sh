@@ -1,24 +1,34 @@
-#!/bin/bash
-# Deploy all 10 crisis response agents
 
 API_KEY="$1"
 CONFIG_FILE="scripts/agent_configs/group-crisis-flood-response.json"
-REGISTRY_URL="http://capregistry.duckdns.org:6900"
-SERVER_IP="45.79.137.119"
+REGISTRY_URL="http://45.79.143.96:6900"
+SERVER_IP="66.228.36.80"
 
-# Read each agent from config and start it
+if [ -z "$API_KEY" ]; then
+    echo "❌ Error: API key required"
+    echo "Usage: $0 YOUR_ANTHROPIC_API_KEY"
+    exit 1
+fi
+
+echo "🚀 Deploying 10 NANDA Crisis Response Agents..."
+echo "📍 Registry: $REGISTRY_URL"
+echo "🌐 Server IP: $SERVER_IP"
+echo ""
+
 python3 << PYEOF
 import json
 import subprocess
 import time
+import os
 
 with open("$CONFIG_FILE") as f:
     agents = json.load(f)
 
+os.makedirs('logs', exist_ok=True)
+
 for agent in agents:
     port = agent['port']
     
-    # Set environment variables and start agent
     env = {
         'ANTHROPIC_API_KEY': '$API_KEY',
         'AGENT_ID': agent['agent_id'],
@@ -33,16 +43,16 @@ for agent in agents:
         'PORT': str(port)
     }
     
-    # Start agent in background
     subprocess.Popen(
         ['python3', 'examples/nanda_agent.py'],
-        env={**subprocess.os.environ, **env},
+        env={**os.environ, **env},
         stdout=open(f'logs/agent_{agent["agent_id"]}.log', 'w'),
         stderr=subprocess.STDOUT
     )
     
     print(f"✅ Started {agent['agent_name']} on port {port}")
-    time.sleep(3)
+    time.sleep(2)
 
 print("\n🎉 All 10 agents started!")
+print("\n📊 View in registry: http://45.79.143.96:9000/registry_ui.html")
 PYEOF
